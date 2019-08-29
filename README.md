@@ -5,7 +5,7 @@
 
 ## Read the FAQ
 
-[Monorepo F.A.Q](./faq.md) -- Answers questions like if you are allowed to share individual assignments(NO!), how to get an account, etc.
+[Monorepo F.A.Q](./faq.md) -- Answers questions like if you are allowed to share individual assignments(NO!), how to get an account on Khoury, and what a monorepo is, etc.
 
 ## Partners Spreadsheet
 (Lookup your weekly lab partner(s) here)
