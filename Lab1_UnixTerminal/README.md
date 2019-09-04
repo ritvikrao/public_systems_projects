@@ -143,7 +143,7 @@ Here is a little tutorial on VIM as a resource: [https://www.howtoforge.com/vim-
 
 # Part 4 - The Network is down! How to work locally.
 
-
+**Yes, these instructions are on your homework as well!**
 
 Sometimes ssh is not available if the internet is not. Hmm, how will we then work on our Khoury machines which are in a linux environment? The solution is to install locally (i.e. your desktop machine) a virtual machine. A virtual machine emulates an entire operating system!
 
@@ -196,9 +196,9 @@ Again, if you have a linux machine you may not need a virtual machine. What is n
 
 ## Deliverable
 
-* Copy and Paste the output from the command-line interface of you running five different terminal commands above into a file called "output.txt" (no capitalization, exactly as named.)
+* Copy and Paste the output from the command-line interface of you running five different terminal commands above into a file called [output.txt](./output.txt) (no capitalization, exactly as named.)
   * Make sure to 'add/commit/push' this file to the repo in this directory.
-* Modify the file called 'main.c' in your respository containing the power example.
+* Modify the file called [main.c](./main.c) in your respository containing the power example.
   * Make sure to 'add/commit/push' this file to the repo in this directory.
 * Take a screenshot of your virtual environment running. Name it 'linux.jpg'
   * Make sure to 'commit' this file to the repo in this directory.
