@@ -28,7 +28,7 @@ Examples of a non-trivial scripts:
 <img width="400px" src="https://cdn-images-1.medium.com/max/1600/1*MaSfT-bQOxfWnKjFPxMg6g.gif">
 
 ## Very Brief Example Tutorial (Template)
-(Note this example is fairly trivial, probably worth a C-. You can use it as a template)
+(Note this example is fairly trivial, probably worth a C-. You would want to add to this script, but notice how the inline comments explain what is going on in a tutorial fashion--that is the goal of your script you are writing.)
 
 ```
 # Problem Statement: "Often I have to search for different files and directories within my computer system. 
@@ -45,14 +45,6 @@ Examples of a non-trivial scripts:
 ls
 ls | wc -l
 ```
-
-Some ideas for improving the script above script to earn closer to an A are the following:
-
-- Print out a 'tree' visualization of the directory you are searching.
-- Output the amount of file space each directory is taking up
-- Output some graphical patterns after running the command.
-- List the history of the last 100 commands that have been run.
-  - Then sort how frequently they are used.
 
 * Some inspiration for developing shell scripting skills can be found here: https://www.hackerrank.com/domains/shell
 
