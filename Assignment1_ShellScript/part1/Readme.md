@@ -12,13 +12,16 @@ You will run your script by typing `sh myScript.sh` on the command line as an ex
 
 The tutorial will be done purely in text and and within a file called [myScript.sh](./myScript.sh). You are required to type your tutorial using a terminal based text editor like 'vim', 'emacs', or 'nano' to write your tutorial (I personally use the vim text editor in my class).
 
-Examples of a non-trivial scripts
+Examples of a non-trivial scripts:
 
-* Sort a particular column of data from a .csv file (e.g. stock prices). Then print out the top ten values, and the average of that column of data.
-* Write a shell script that downloads a webpage, and then parses it to determine what the weather is today.
-* Write a shell script that allows you to query information about your computer system from a menu of options. Users might like to know information like hard drive space, if a graphics card is available, how fast the cpu is, etc.
-* Write a shell script that downloads a webpage (using wget, perhaps to grab some json data), then parses some of the data, and prints it to the terminal. 
-* You can use your imagination to create other examples.
+1. Download some data (e.g. housing prices) from the web using a program like curl or wget. It may be convenient if you can download the data in a .csv format. Sort the values in the data (perhaps a particular column in a spreadsheet), then print out the top ten values, and finally the average of that column of data.
+	* You could download some sample .csv data from: [https://support.spatialkey.com/spatialkey-sample-csv-data/](https://support.spatialkey.com/spatialkey-sample-csv-data/)
+	* Handy commands may include (but are not limited to): cut, wget, curl, echo, sort, and a little bit of bash scripting.
+2. Write a shell script that downloads a weather webpage, and then parses it to determine what the weather is today. The script could then report what type of jacket you should wear and send you an e-mail.
+	* Some handy commands may include (but are not limited to): mailx, awk, sed
+3. Write a shell script that allows you to query information about your computer system from a menu of options. Users might like to know information like hard drive space, if a graphics card is available, how fast the cpu is, etc.
+	* Some handy commands may include (but are not limited to): proc, lscpu
+4. You can use your imagination to create other tutorials as well.
 
 # Part 1 - myScript.sh
 
