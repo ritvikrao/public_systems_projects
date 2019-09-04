@@ -16,7 +16,7 @@ Remember, labs are due at the start of class the following week--so you get one 
 [Tutorial playlist starts here!](https://www.youtube.com/watch?v=HjZVOWAGgZQ&list=PLvv0ScY6vfd8qupx0owF78ZcbvySvbWfx)
  (Note the tutorial is for all levels of my systems courses--ignore the course numbers!)
 
-<img width="300px" src="./images/playlist.JPG">
+<img width="300px" src="./images/playlist.jpeg">
 
 ## Part 0 - Obtain the mono repo
 
