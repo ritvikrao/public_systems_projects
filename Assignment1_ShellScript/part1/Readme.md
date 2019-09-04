@@ -10,7 +10,7 @@ You will run your script by typing `sh myScript.sh` on the command line as an ex
 
 ### How to write your tutorial
 
-The tutorial will be done purely in text and and within a file called [myscript.sh](./myscript.sh). You are required to type your tutorial using a terminal based text editor like 'vim', 'emacs', or 'nano' to write your tutorial (I personally use the vim text editor in my class).
+The tutorial will be done purely in text and and within a file called [myScript.sh](./myScript.sh). You are required to type your tutorial using a terminal based text editor like 'vim', 'emacs', or 'nano' to write your tutorial (I personally use the vim text editor in my class).
 
 Examples of a non-trivial scripts
 
