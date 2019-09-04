@@ -2,7 +2,11 @@
 
 Getting familiar with the terminal is a fundamental skill to have, as you may not always have a neat graphical user interface ([GUI](https://en.wikipedia.org/wiki/Graphical_user_interface)) environment available to you. Many of you have various levels of experience using the terminal, so you will have some flexibility to be creative and push your skills.
 
-For this assignment, you will be warming up by writing a 1-2 page tutorial on bash scripting. Your tutorial will be embededded in a shell script, explaining how to do something on the terminal that is non-trivial and automates some task that can be useful to you. You will run your script by typing `sh myScript.sh` on the command line as an executable shell script(sh is the GNU Bourne-Again SHell (type [man sh](https://linux.die.net/man/1/sh) on the terminal for more information).  You can look at example 'sh' scripts for inspiration on what you can achieve on the web, but you must cite them appropriately in your [README.md](./../README.md). 
+For this assignment, you will be warming up by writing a 1-2 page tutorial using unix commands and the bash scripting language. Your tutorial will be embedded in a shell script comments, explaining how to do something on the terminal that is non-trivial and automates some task that is particularly useful to you. 
+
+### How to run your script
+
+You will run your script by typing `sh myScript.sh` on the command line as an executable shell script(sh is the GNU Bourne-Again SHell (type [man sh](https://linux.die.net/man/1/sh) on the terminal for more information).  You can look at example 'sh' scripts for inspiration on what you can achieve on the web, but you must cite them appropriately in your [README.md](./../README.md). 
 
 ### How to write your tutorial
 
