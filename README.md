@@ -1,7 +1,7 @@
 # Monorepo
 
 * Ritvik Rao
-* *[Phonetic spelling](https://dictionary.cambridge.org/us/help/phonetics.html) of your name here* **(TODO: Change this)**
+* rɪtvɪk raʊ
 
 ## Read the FAQ
 
