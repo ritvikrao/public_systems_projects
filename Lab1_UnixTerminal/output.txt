@@ -1,1 +1,157 @@
-# Simply copy and paste the output from your terminal here!
+-bash-4.2$ whoami
+rrao
+-bash-4.2$ ls
+-bash-4.2$ pwd
+/home/rrao
+-bash-4.2$ git clone https://github.com/fall19systems/monorepo-ritvikrao.git
+Cloning into 'monorepo-ritvikrao'...
+Username for 'https://github.com': ritvikrao
+Password for 'https://ritvikrao@github.com':
+remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/fall19systems/monorepo-ritvikrao.git/'
+-bash-4.2$ git clone https://github.com/fall19systems/monorepo-ritvikrao.git
+Cloning into 'monorepo-ritvikrao'...
+Username for 'https://github.com': ritvikrao
+Password for 'https://ritvikrao@github.com':
+remote: Enumerating objects: 90, done.
+remote: Counting objects: 100% (90/90), done.
+remote: Compressing objects: 100% (58/58), done.
+remote: Total 90 (delta 32), reused 83 (delta 28), pack-reused 0
+Unpacking objects: 100% (90/90), done.
+-bash-4.2$ git pull
+fatal: Not a git repository (or any parent up to mount point /home/rrao)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+-bash-4.2$ ls
+monorepo-ritvikrao
+-bash-4.2$ cd monorepo-ritvikrao/
+-bash-4.2$ ls
+Assignment1_ShellScript  CStyle.md  faq.md  Lab1_UnixTerminal  README.md  Tips.md
+-bash-4.2$ cd Lab1_UnixTerminal/
+-bash-4.2$ ls
+ExternalResources  images  main.c  output.txt  README.md
+-bash-4.2$ git status
+# On branch master
+nothing to commit, working directory clean
+-bash-4.2$ man touch
+-bash-4.2$ pwd
+/home/rrao/monorepo-ritvikrao/Lab1_UnixTerminal
+-bash-4.2$ whoami
+rrao
+-bash-4.2$ echo 'hello'
+hello
+-bash-4.2$ ls
+ExternalResources  images  main.c  output.txt  README.md
+-bash-4.2$ pwd
+/home/rrao/monorepo-ritvikrao/Lab1_UnixTerminal
+-bash-4.2$ mkdir RandomDir
+-bash-4.2$ rmdir RandomDir
+-bash-4.2$ cd ..
+-bash-4.2$ cd Lab1_UnixTerminal/
+-bash-4.2$ ls
+ExternalResources  images  main.c  output.txt  README.md
+-bash-4.2$ mv main.c main1.c
+-bash-4.2$ mv main1.c main.c
+-bash-4.2$ ls
+ExternalResources  images  main.c  output.txt  README.md
+-bash-4.2$ mv main1.c main.c
+mv: cannot stat ‘main1.c’: No such file or directory
+-bash-4.2$ mv main.c main1.c
+-bash-4.2$ ls
+ExternalResources  images  main1.c  output.txt  README.md
+-bash-4.2$ mv main1.c main.c
+-bash-4.2$ ls
+ExternalResources  images  main.c  output.txt  README.md
+-bash-4.2$ man cut
+-bash-4.2$ ps
+   PID TTY          TIME CMD
+396625 pts/39   00:00:00 bash
+406922 pts/39   00:00:00 ps
+-bash-4.2$ touch random.txt
+-bash-4.2$ vim random.txt
+-bash-4.2$ vim random.txt
+-bash-4.2$ sort random.txt
+A line
+B line
+C line
+-bash-4.2$ vim random.txt
+-bash-4.2$ echo random.txt
+random.txt
+-bash-4.2$ random.txt
+-bash: random.txt: command not found
+-bash-4.2$ cat random.txt
+C line
+B line
+A line
+-bash-4.2$ man nl
+-bash-4.2$ nl -b random.txt
+nl: invalid body numbering style: ‘random.txt’
+Try 'nl --help' for more information.
+-bash-4.2$ nl -b 1 random.txt
+nl: invalid body numbering style: ‘1’
+Try 'nl --help' for more information.
+-bash-4.2$ man nl
+-bash-4.2$ nl -b a random.txt
+     1  C line
+     2  B line
+     3  A line
+-bash-4.2$ cut -c l random.txt
+cut: invalid byte, character or field list
+Try 'cut --help' for more information.
+-bash-4.2$ man cut
+-bash-4.2$ cut -b 1- random.txt
+C line
+B line
+A line
+-bash-4.2$ cut -b 2- random.txt
+ line
+ line
+ line
+-bash-4.2$ cat random.txt
+C line
+B line
+A line
+-bash-4.2$ grep 'A' random.txt
+A line
+-bash-4.2$ grep 'line' random.txt
+C line
+B line
+A line
+-bash-4.2$ ls
+ExternalResources  images  main.c  output.txt  random.txt  README.md
+-bash-4.2$ vim main.c
+-bash-4.2$ clang main.c -o main
+main.c:11:26: warning: format specifies type 'int' but the argument has type 'double' [-Wformat]
+                printf("2^%d=%d\n", i, power(2, i));
+                             ~~        ^~~~~~~~~~~
+                             %f
+1 warning generated.
+-bash-4.2$ vim main.c
+-bash-4.2$ clang main.c -o main
+-bash-4.2$ ./main
+2^1=2.000000
+2^2=4.000000
+2^3=8.000000
+2^4=16.000000
+2^5=32.000000
+2^6=64.000000
+2^7=128.000000
+2^8=256.000000
+2^9=512.000000
+2^10=1024.000000
+-bash-4.2$ script output.txt
+Script started, file is output.txt
+bash-4.2$ vim output.txt
+bash-4.2$ ls
+ExternalResources  images  main  main.c  output.txt  random.txt  README.md
+bash-4.2$ vim output.txt
+bash-4.2$ man script
+bash-4.2$ exit
+exit
+Script done, file is output.txt
+-bash-4.2$ vim output.txt
+-bash-4.2$ ./output.txt
+-bash: ./output.txt: Permission denied
+-bash-4.2$ ls
+ExternalResources  images  main  main.c  output.txt  random.txt  README.md
+-bash-4.2$
+
