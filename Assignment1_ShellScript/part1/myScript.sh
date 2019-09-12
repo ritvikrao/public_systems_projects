@@ -4,6 +4,8 @@
 # It will show the year and week, along with the Patriots game automatically.
 # The script will also allow the user to request the score of any team that week.
 
+# Additionally, I would not like you to use this for Piazza.
+
 # First, let's make a welcome message, using echo. Echo simply prints text onto the terminal.
 # I printed the 0-length strings to add spacing between lines.
 
@@ -118,6 +120,9 @@ if [ "$CHOICE" == "quit" ];
 then
 	exit 0
 else
+
+# If the user chooses to search for a team, the following code will run.
+# This is the same logic that I use to find the Patriots score.
 	
 cat scores.txt | grep "$CHOICE" > test.txt
 
