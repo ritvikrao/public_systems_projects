@@ -5,9 +5,11 @@
 - Did you collaborate with any other students/TAs/Professors? no
 - Did you use any external resources? (Cite them below)
   - https://www.lifewire.com/example-uses-of-sed-2201058
-  - tbd
+  - http://www.nfl.com/liveupdate/scorestrip/ss.xml
 - (Optional) What was your favorite part of the assignment?
+My favorite part was running the shell script and seeing it work.
 - (Optional) How would you improve the assignment?
+I would format the output even further with commands such as awk and I would allow the user to search for games in other weeks.
 
 # Logistics
 
