@@ -1,10 +1,10 @@
 # TODO Please edit the following information in your assignment
 
 - Name: Ritvik Rao
-- How many hours did it take you to complete this assignment?
+- How many hours did it take you to complete this assignment? 5
 - Did you collaborate with any other students/TAs/Professors? no
 - Did you use any external resources? (Cite them below)
-  - tbd
+  - https://www.lifewire.com/example-uses-of-sed-2201058
   - tbd
 - (Optional) What was your favorite part of the assignment?
 - (Optional) How would you improve the assignment?
