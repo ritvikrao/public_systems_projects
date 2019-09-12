@@ -25,6 +25,7 @@ curl -s http://www.nfl.com/liveupdate/scorestrip/ss.xml -o scores.txt
 # getnext will use the read command to parse the output.
 # The -d option allows me to set my own delimiter (in this case, a space.
 # The TAG is a variable that stores the string privided by the read command.
+# Example: read -d ' ' TAG called once on 'this particular sentence' returns 'this'
 
 getnext () {
 	read -d ' ' TAG
@@ -32,13 +33,17 @@ getnext () {
 
 # I use cat to select the scores.txt file as the one to process,
 # and I use grep to find the line in scores.txt that contains the week and year info.
-# The output is sent to test.txt.
+# The output is sent with the right arrow to test.txt.
 
 cat scores.txt | grep 'w=' > test.txt
 
 # I then run getnext iteratively on my test.txt file to split the
 # line of text. This will allow me to isolate the week and year
 # information on separate lines.
+# Example: getnext repeatedly on 'this particular sentence' returns:
+# this
+# particular
+# sentence
 
 cat test.txt | while getnext ; do
 	echo "$TAG" >> test2.txt
@@ -50,8 +55,8 @@ done
 # to format that line into a user-friendly format, which is then
 # printed to the terminal.
 # Example output:
-# Week 2
-# Year 2019
+# sed 's/w=/Week /;s/"//g' turns w="2" to  Week 2
+# sed 's/y=/Year /;s/"//g' turns y="2019" to Year 2019
 
 grep 'w' test2.txt | sed 's/w=/Week /;s/"//g'
 
@@ -118,6 +123,7 @@ read CHOICE
 # I then use the user input to either exit or find the score.
 if [ "$CHOICE" == "quit" ];
 then
+	rm test2.txt
 	exit 0
 else
 
