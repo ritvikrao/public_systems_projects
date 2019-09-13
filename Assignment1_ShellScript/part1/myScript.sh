@@ -129,6 +129,19 @@ else
 
 # If the user chooses to search for a team, the following code will run.
 # This is the same logic that I use to find the Patriots score.
+# Example input on prompt: steelers
+# Example output:
+# This week's Patriots game:
+#
+# Game ID Number: 2019090505
+# Day in the week: Sun
+# Game time: 8:20
+# Home team abbreviation: NE
+# Home team name: patriots
+# Home team score: 33
+# Visiting team abbreviation: PIT
+# Visiting team name: steelers
+# Visiting team score: 3
 	
 cat scores.txt | grep "$CHOICE" > test.txt
 
