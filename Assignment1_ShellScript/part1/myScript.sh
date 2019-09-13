@@ -129,7 +129,9 @@ else
 
 # If the user chooses to search for a team, the following code will run.
 # This is the same logic that I use to find the Patriots score.
+
 # Example input on prompt: steelers
+
 # Example output:
 # This week's Patriots game:
 #
