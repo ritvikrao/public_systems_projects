@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ss>
-  <gms w="2" y="2019" t="R" gd="1" bph="0">
-    <g eid="2019091200" gsis="57916" d="Thu" t="8:20" q="P" h="CAR" hnn="panthers" hs="0" v="TB" vnn="buccaneers" vs="0" rz="0" ga="" gt="REG"/>
+  <gms w="2" y="2019" t="R" gd="1" bph="7">
+    <g eid="2019091200" gsis="57916" d="Thu" t="8:20" q="4" k="03:22" h="CAR" hnn="panthers" hs="14" v="TB" vnn="buccaneers" vs="17" p="TB" rz="1" ga="" gt="REG"/>
     <g eid="2019091500" gsis="57917" d="Sun" t="1:00" q="P" h="BAL" hnn="ravens" hs="0" v="ARI" vnn="cardinals" vs="0" rz="0" ga="" gt="REG"/>
     <g eid="2019091501" gsis="57918" d="Sun" t="1:00" q="P" h="CIN" hnn="bengals" hs="0" v="SF" vnn="49ers" vs="0" rz="0" ga="" gt="REG"/>
     <g eid="2019091502" gsis="57919" d="Sun" t="1:00" q="P" h="DET" hnn="lions" hs="0" v="LAC" vnn="chargers" vs="0" rz="0" ga="" gt="REG"/>

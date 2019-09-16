@@ -1,1 +1,1 @@
-    <g eid="2019091600" gsis="57931" d="Mon" t="8:15" q="P" h="NYJ" hnn="jets" hs="0" v="CLE" vnn="browns" vs="0" rz="0" ga="" gt="REG"/>
+    <g eid="2019091200" gsis="57916" d="Thu" t="8:20" q="4" k="03:22" h="CAR" hnn="panthers" hs="14" v="TB" vnn="buccaneers" vs="17" p="TB" rz="1" ga="" gt="REG"/>
