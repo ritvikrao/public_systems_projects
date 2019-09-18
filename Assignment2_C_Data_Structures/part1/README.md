@@ -34,7 +34,11 @@ Circular queues are used quite a bit in operating systems and high performance s
 
 # TODO: Put your answer here
 
-*My answer is ...*
+*The main use of ring buffers in operating systems is to manage process buffers. There are many cases where an input has a different speed than an output, which would require the use of some kind of temporary storage where pending tasks can be stored.*
+
+*One example of practical buffer use is with wireless networking. Information is packaged into data packets before being sent, and because of the latency in the network, the data packets may not be sent very instantly. A ring buffer is a great place to hold data packets because items in ring buffers enter and exit with a fixed order, data does not have to be moved or copied before output, and there is no need for complicated reorganization.*
+
+*Within a single computers, ring buffers can also be used as waiting space for jobs sent to the CPU. In this case, ring buffers also have the advantage of being an easy place to insert and remove data without having to organize it within the buffer. The simplicity of ring buffers also eliminates the risk of memory leaks.*
 
 
 # Unit Tests
