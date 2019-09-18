@@ -37,7 +37,9 @@ We are going to talk about stacks quite a lot in this course, so it will be impo
 
 # TODO: Put your answer here
 
-*My answer is ...*
+*Within programming, one of the most common uses of the stack is to keep track of function calls. Programs rely on stacks to temporarily store variables in use and to keep track of sub-tasks (such as conditional loops) within a function. Additionally, stacks make it easy to keep track of recursion, where a recursive call results to a stak addition and the completion of a recursion is represented with a stack pop. Due to space limitations of the stack, recursive calls have a limit that causes a stack overflow error when the limit is exceeded.*
+
+*One other use of stacks is in order reversal, such as reversing a string. Each item (such as a character in a string) is placed on a stack in order, then items are popped from the stack and recorded in the order in which they are popped, which completes the reversal operation. Like circular queues, stacks are easy to manage because they do not require copying or reorganization of data within the stack, which makes them safe from memort leaks.*
 
 # Unit Tests
 
