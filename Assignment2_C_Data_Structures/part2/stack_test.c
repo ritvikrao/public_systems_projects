@@ -101,12 +101,29 @@ int unitTest5(int status){
 
 
 // TODO: Add tests here
+
+int unitTest6(int status){
+	printf("=======Stack unitTest6=======\n");
+	stack_t* test6 = create_stack(32);
+	int i;
+	for(i=0; i < 33; i++){
+        	stack_enqueue(test6,1);
+    	}
+	for(i=0; i < 32; i++){
+        	stack_dequeue(test6);
+    	}
+
+	return 1;
+}
+
+
 int (*unitTests[])(int)={
     unitTest1,
     unitTest2,
     unitTest3,
     unitTest4,
     unitTest5,
+    unitTest6,
     NULL
 };
 
@@ -119,9 +136,10 @@ int main(){
     // List of Unit Tests to test your data structure
     int counter =0;
     while(unitTests[counter]!=NULL){
-        unitTests[counter](1);
+        int result = unitTests[counter](1);
         counter++;
+	if(result==1) testsPassed++;
     }
-
+	printf("Unit tests passed: %d\n", testsPassed);
     return 0;
 }

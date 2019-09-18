@@ -102,12 +102,30 @@ int unitTest5(int status){
 }
 
 // TODO: Add more tests here
+
+int unitTest6(int status){
+	printf("========queue unitTest6========\n");
+    	queue_t* test6 = create_queue(30);
+	int i;
+	for(i=0; i < 31; i++){
+        	queue_enqueue(test6,1);
+    	}
+	for(i=0; i < 30; i++){
+                queue_dequeue(test6);
+        }
+    free_queue(test6);
+
+    return 1;
+}
+
+
 int (*unitTests[])(int)={
     unitTest1,
     unitTest2,
     unitTest3,
     unitTest4,
     unitTest5,
+    unitTest6,
     NULL
 };
 
@@ -116,13 +134,16 @@ int (*unitTests[])(int)={
 // ================== Program Entry ===================
 // ====================================================
 int main(){
+
     unsigned int testsPassed = 0;
     // List of Unit Tests to test your data structure
     int counter =0;
     while(unitTests[counter]!=NULL){
-        unitTests[counter](1);
-        counter++;
+    	int result = unitTests[counter](1);
+    	counter++;
+    if(result==1) testsPassed++;
     }
-
+    printf("Unit tests passed: %d\n", testsPassed);
     return 0;
 }
+    
