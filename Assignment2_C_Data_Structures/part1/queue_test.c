@@ -109,6 +109,7 @@ int unitTest6(int status){
 	int i;
 	for(i=0; i < 31; i++){
         	queue_enqueue(test6,1);
+		//expecting an error
     	}
 	for(i=0; i < 30; i++){
                 queue_dequeue(test6);
