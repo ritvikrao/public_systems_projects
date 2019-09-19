@@ -108,6 +108,7 @@ int unitTest6(int status){
 	int i;
 	for(i=0; i < 33; i++){
         	stack_enqueue(test6,1);
+		//Error printout is expected here
     	}
 	for(i=0; i < 32; i++){
         	stack_dequeue(test6);

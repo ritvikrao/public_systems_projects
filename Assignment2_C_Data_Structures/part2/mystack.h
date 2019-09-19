@@ -48,6 +48,7 @@ stack_t* create_stack(unsigned int capacity){
 	stack_t* myStack = (stack_t*) malloc(sizeof(stack_t));	
 	myStack->count=0;
 	myStack->capacity=capacity;
+	myStack->head=NULL;
 	return myStack;
 }
 
@@ -56,6 +57,7 @@ stack_t* create_stack(unsigned int capacity){
 // Returns 1 if true (The stack is completely empty)
 // Returns 0 if false (the stack has at least one element enqueued)
 int stack_empty(stack_t* s){
+	if(s==NULL) exit(1);
 	if(s->count==0) return 1;
 	return 0;
 }
@@ -65,6 +67,7 @@ int stack_empty(stack_t* s){
 // Returns 1 if true (The Stack is completely full, i.e. equal to capacity)
 // Returns 0 if false (the Stack has more space available to enqueue items)
 int stack_full(stack_t* s){
+	if(s==NULL) exit(1);
 	if(s->count==s->capacity) return 1;
 	return 0;
 }
@@ -130,19 +133,16 @@ unsigned int stack_size(stack_t* s){
 	return s->count;
 }
 
-void free_list(node_t* node){
-	while(node!=NULL){
-		node_t* previous = node;
-		node = node->next;
-		free(previous);
-	}
-}
-
 // Free stack
 // Removes a stack and ALL of its elements from memory.
 // This should be called before the proram terminates.
 void free_stack(stack_t* s){
-	free_list(s->head);
+	if(s==NULL) exit(1);
+	while(s->head!=NULL){
+		node_t* previous = s->head;
+		s->head = s->head->next;
+		free(previous);
+	}
 	free(s);	
 }
 
