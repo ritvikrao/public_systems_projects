@@ -76,7 +76,7 @@ int stack_full(stack_t* s){
 int stack_enqueue(stack_t* s, int item){
 	if(s==NULL){
                 printf("Error: null stack\n");
-                exit(1);
+                return -1;
         }
 	if(stack_full(s)==1){
 		printf("Error: Stack is full\n");

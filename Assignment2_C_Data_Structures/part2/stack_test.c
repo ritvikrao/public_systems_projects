@@ -112,7 +112,7 @@ int unitTest6(int status){
 	for(i=0; i < 32; i++){
         	stack_dequeue(test6);
     	}
-
+	free_stack(test6);
 	return 1;
 }
 
