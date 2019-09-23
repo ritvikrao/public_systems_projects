@@ -14,7 +14,7 @@ In today's lab you are going to get some practice looking at and writing assembl
 
 The first task is to actually just write a 'hello world' in assembly.
 
-- Enter the following text into a file called *hello.s*
+- Enter the following text into a file called [hello.s](./hello.s)
 - ```asm
 	  # Example for x86-64 processor using AT&T Style syntax
 	.global _start
@@ -171,13 +171,13 @@ The C programming language has a 'goto' command, search how to use it if you hav
 - Observe arguments put into registers
 - Observe where 'popq' is called.
 
-# Part 3 - Check your understanding
-
-Provided in Part 3 is an assembly file called [barebones.s](./barebones.s) which contains a minimal assembly program--very similar to part 1. Fill in the questions to make sure you understand all of the parts of an assembly program. Because every instruction in assembly matters, it's important to pay attention to the details of what is going on. I think this is also one of the reasons why assembly programming is fun and very satisfying when things work however!
-
 ### Response/Observations
 
 *Write here where popq is called*
+
+# Part 3 - Check your understanding
+
+Provided in Part 3 is an assembly file called [barebones.s](./barebones.s) which contains a minimal assembly program--very similar to part 1. Fill in the questions to make sure you understand all of the parts of an assembly program. Because every instruction in assembly matters, it's important to pay attention to the details of what is going on. I think this is also one of the reasons why assembly programming is fun and very satisfying when things work however!
 
 # More resources to help
 
@@ -190,10 +190,10 @@ Provided in Part 3 is an assembly file called [barebones.s](./barebones.s) which
 
 # Deliverable
 
-1. Complete the hello world from par1
+1. Complete the [hello.s](./hello.s) world from part 1
 2. For part 2, add your .S files that you have generated to this repository.
   - Note this submission will be auto graded for completion (i.e. save the file names as shown).
-  - Add your observations in the appropriate response/observations section for each code.
+  - Add your observations (brief 1-2 sentences) in the appropriate response/observations section for each code in this readme file.
 3. Answer the questions in [barebones.s](./barebones.s) for part 3
   
 
