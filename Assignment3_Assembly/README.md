@@ -1,13 +1,14 @@
 # TODO Please edit the following information in your assignment
 
-- Name:
-- How many hours did it take you to complete this assignment?
-- Did you collaborate with any other students/TAs/Professors?
+- Name: Ritvik Rao
+- How many hours did it take you to complete this assignment? 20
+- Did you collaborate with any other students/TAs/Professors? no
 - Did you use any external resources? (Cite them below)
-  - tbd
-  - tbd
-- (Optional) What was your favorite part of the assignment?
+  - Stack Overflow
+  - asciitable.com
+- (Optional) What was your favorite part of the assignment? Learning how assembly works
 - (Optional) How would you improve the assignment?
+In future, we should be able to use scanf rather than have to spend time on input processing. The input processing took up most of the time in the homework and was extremely boring.
 
 # Logistics
 
