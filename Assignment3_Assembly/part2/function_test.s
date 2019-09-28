@@ -31,10 +31,7 @@ _getvaluea:
 	subq $1, %r15
 	movb a(,%r15,1), %dil
 	cmpb $0, %dil
-	je .loop
-	.loopa:
-	movb a(,%r15,1), %dil
-	subq $1, %r15
+	je .end
 	cmpb $10, %dil
 	je .loopa
 	cmpb $45, %dil
@@ -46,6 +43,8 @@ _getvaluea:
 	cmpq $0, %r15
 	je .endline
 	.neg:
+	.end:
+	jmp .loop
 	.endline:
 	ret	
 
