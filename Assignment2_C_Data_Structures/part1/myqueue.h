@@ -47,7 +47,7 @@ queue_t* create_queue(unsigned int _capacity){
 int queue_empty(queue_t* q){
 	if(q==NULL){
                 printf("Error: null queue\n");
-                exit(1);
+                return -1;
         }
 	if(q->size==0) return 1;
 	return 0;
@@ -60,7 +60,7 @@ int queue_empty(queue_t* q){
 int queue_full(queue_t* q){
 	if(q==NULL){
                 printf("Error: null queue\n");
-                exit(1);
+                return -1;
         }
 	if(q->size==q->capacity) return 1;
 	return 0;
@@ -73,7 +73,7 @@ int queue_full(queue_t* q){
 int queue_enqueue(queue_t* q, int item){
 	if(q==NULL){
         	printf("Error: null queue\n");
-        	exit(1);
+        	return -1;
         }
 	if(queue_full(q)==1){
 		printf("Error: full queue\n");
@@ -88,11 +88,11 @@ int queue_enqueue(queue_t* q, int item){
 // Dequeue an item
 // Returns the item at the front of the queue and
 // removes an item from the queue.
-// Removing from an empty queue should crash the program, call exit(1)
+// Removing from an empty queue should crash the program, call return -1
 int queue_dequeue(queue_t *q){
 	if(q==NULL||q->size==0){
                 printf("Error: null or empty queue\n");
-                exit(1);
+                return -1;
         }
 	q->size--;
 	q->front = (q->front+1)%q->capacity;
@@ -103,11 +103,11 @@ int queue_dequeue(queue_t *q){
 // Queue Size
 // Queries the current size of a queue
 // A queue that has not been previously created will crash the program.
-// (i.e. A NULL queue cannot return the size, call exit(1))
+// (i.e. A NULL queue cannot return the size, call return -1)
 unsigned int queue_size(queue_t* q){
 	if(q==NULL){
 		printf("Error: null queue\n");
-		exit(1);
+		return -1;
 	}
 	return q->size;
 }
@@ -119,7 +119,7 @@ unsigned int queue_size(queue_t* q){
 void free_queue(queue_t* q){
 	if(q==NULL){
                 printf("Error: null queue\n");
-                exit(1);
+                return -1;
         }
         free(q->data);
 	free(q);

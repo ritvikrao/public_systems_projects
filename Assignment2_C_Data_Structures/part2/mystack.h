@@ -43,7 +43,7 @@ stack_t* create_stack(unsigned int capacity){
 	// Modify the body of this function as needed.
 	if(capacity>MAX_DEPTH||capacity<0){
 		printf("Error: capacity out of range\n");
-		exit(1);
+		return -1;
 	}
 	stack_t* myStack = (stack_t*) malloc(sizeof(stack_t));	
 	myStack->count=0;
@@ -57,7 +57,7 @@ stack_t* create_stack(unsigned int capacity){
 // Returns 1 if true (The stack is completely empty)
 // Returns 0 if false (the stack has at least one element enqueued)
 int stack_empty(stack_t* s){
-	if(s==NULL) exit(1);
+	if(s==NULL) return -1;
 	if(s->count==0) return 1;
 	return 0;
 }
@@ -67,7 +67,7 @@ int stack_empty(stack_t* s){
 // Returns 1 if true (The Stack is completely full, i.e. equal to capacity)
 // Returns 0 if false (the Stack has more space available to enqueue items)
 int stack_full(stack_t* s){
-	if(s==NULL) exit(1);
+	if(s==NULL) return -1;
 	if(s->count==s->capacity) return 1;
 	return 0;
 }
@@ -104,15 +104,15 @@ int stack_enqueue(stack_t* s, int item){
 // Dequeue an item
 // Returns the item at the front of the stack and
 // removes an item from the stack.
-// Removing from an empty stack should crash the program, call exit(1).
+// Removing from an empty stack should crash the program, call return -1.
 int stack_dequeue(stack_t* s){
 	if(s==NULL){
                 printf("Error: null stack\n");
-                exit(1);
+                return -1;
         }
 	if(stack_empty(s)==1){
 		printf("Error: empty stack\n");
-		exit(1);
+		return -1;
 	}
 	node_t* new_head = s->head->next;
 	free(s->head);
@@ -128,7 +128,7 @@ int stack_dequeue(stack_t* s){
 unsigned int stack_size(stack_t* s){
 	if(s==NULL){
 		printf("Error: null stack\n");
-		exit(1);
+		return -1;
 	}
 	return s->count;
 }
@@ -137,7 +137,7 @@ unsigned int stack_size(stack_t* s){
 // Removes a stack and ALL of its elements from memory.
 // This should be called before the proram terminates.
 void free_stack(stack_t* s){
-	if(s==NULL) exit(1);
+	if(s==NULL) return -1;
 	while(s->head!=NULL){
 		node_t* previous = s->head;
 		s->head = s->head->next;

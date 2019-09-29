@@ -1,0 +1,101 @@
+TestAssignment2_part1.c:17:test_queue_refill:FAIL: Queue dequeue failed
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+Error: full queue
+TestAssignment2_part1.c:97:test_queue_overflow:PASS
+TestAssignment2_part1.c:50:test_queue_half_refill:FAIL: Queue dequeue failed
+TestAssignment2_part1.c:99:test_queue_max_int:PASS
+TestAssignment2_part1.c:80:test_queue_size:FAIL: Queue dequeue failed
+Error: null or empty queue
+TestAssignment2_part1.c:101:test_queue_empty:PASS
+
+-----------------------
+6 Tests 3 Failures 0 Ignored 
+FAIL
