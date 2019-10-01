@@ -6,7 +6,7 @@
 
 2. Do we have some information that could be useful for LD_PRELOAD if we were writing a function to override that function? That is, what information do we need to use to name a function?
 
-*We are given that foo is a global symbol and a function, and  we are also given foo's size.*
+*We are given that foo is a global/external symbol and a function, and we are also given foo's size. The g and F tags tell us that we can externally override foo.*
 
 3. How many add_generic functions are there? What is your best guess for what the compiler is doing behind the scenes to implement the 'templating' feature?
 
