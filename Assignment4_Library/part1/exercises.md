@@ -10,4 +10,4 @@
 
 3. How many add_generic functions are there? What is your best guess for what the compiler is doing behind the scenes to implement the 'templating' feature?
 
-*edit your answer here*
+*There are 4 add_generic functions. Behind the scenes, the compiler creates a new add_generic function if a new datatype is used. For example, if ints are passed, the compiler will create an int version of the function.*
