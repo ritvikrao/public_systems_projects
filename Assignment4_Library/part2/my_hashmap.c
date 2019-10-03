@@ -173,6 +173,9 @@ void hashmap_removeKey(hashmap_t* _hashmap, char* key){
 		prev = prev -> next;
 	}
 	prev -> next = remove -> next;
+	free(remove -> kv -> key);
+        free(remove -> kv -> value);
+        free(remove -> kv);
 	free(remove);
 	return;
 }

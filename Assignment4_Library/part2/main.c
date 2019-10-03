@@ -33,6 +33,11 @@ int unitTest2(){
     hashmap_insert(myHashmap,"bear", "a wild farm animal");
     hashmap_insert(myHashmap,"ox", "another farm animal");
     hashmap_insert(myHashmap,"cow", "a favorite farm animal");
+    // delete the dog and cow
+    hashmap_removeKey(myHashmap, "dog");
+    hashmap_removeKey(myHashmap, "cow");
+    // attempt to remove the cow again
+    hashmap_removeKey(myHashmap, "cow");
     hashmap_insert(myHashmap,"hippo", "a farm animal?");
     hashmap_insert(myHashmap,"elephant", "not a farm animal");
     hashmap_insert(myHashmap,"human", "an animal that farms");
