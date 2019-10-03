@@ -1,13 +1,14 @@
 # TODO Please edit the following information in your assignment
 
-- Name:
-- How many hours did it take you to complete this assignment?
-- Did you collaborate with any other students/TAs/Professors?
+- Name: Ritvik Rao
+- How many hours did it take you to complete this assignment? 2.5
+- Did you collaborate with any other students/TAs/Professors? No
 - Did you use any external resources? (Cite them below)
-  - tbd
-  - tbd
-- (Optional) What was your favorite part of the assignment?
+  - tutorials point for c library stuff
+  - stack overflow for valgrind questions
+- (Optional) What was your favorite part of the assignment? valgrind: excellent way to prevent memory leaks
 - (Optional) How would you improve the assignment?
+I wish this assignment had us add one or two more functions to our hashmaps.
 
 # Logistics
 
