@@ -11,6 +11,7 @@
 // ==================================================
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "containers.h"
 #include "my_hashmap.h"
 
@@ -26,17 +27,18 @@ int stringHash(char* myKey, int numberOfBuckets){
 // Initializes the capacity(i.e. number of buckets)
 hashmap_t* hashmap_create(unsigned int _buckets){
     // Allocate memory for our hashmap
-	//TODO
+	hashmap_t* newHash = (hashmap_t*) malloc(sizeof(hashmap_t));
     // Set the number of buckets
-	//TODO
+	newHash -> buckets = _buckets;
     // Initialize our array of lists for each bucket
-	//TODO
+	newHash -> arrayOfLists = (node_t**) malloc(sizeof(node_t*)*_buckets);
     // Setup our hash function to point to our
     // stringHash function.
-	//TODO
+	newHash -> hashFunction = stringHash;
     // Return the new map that we have created
-    return NULL;
+    return newHash;
 }
+
 
 // Frees a hashmap
 // Responsibility to free a hashmap that has been previously allocated.
@@ -45,7 +47,23 @@ hashmap_t* hashmap_create(unsigned int _buckets){
 // This function should run in O(n) time
 void hashmap_delete(hashmap_t* _hashmap){
     if(_hashmap != NULL){
-	//TODO
+	int i;
+	for(i=0; i<_hashmap->buckets; i++){
+		node_t* node = _hashmap -> arrayOfLists[i];
+		while(node!=NULL){
+                	node_t* previous = node;
+                	node = node->next;
+			free(previous -> kv -> key);
+			free(previous -> kv -> value);
+			free(previous -> kv);
+                	free(previous);
+        	}
+	}
+	free(_hashmap->arrayOfLists);
+	free(_hashmap);
+    }
+    else{
+	exit(1);
     }
 }
 
@@ -59,7 +77,16 @@ void hashmap_delete(hashmap_t* _hashmap){
 //  - Search (i.e. iterate through) that bucket to see if the key exists.
 // This function should run in average-case constant time
 int hashmap_hasKey(hashmap_t* _hashmap, char* key){
-	//TODO
+	if(_hashmap == NULL){
+		exit(1);
+	}
+	int bucket = _hashmap -> hashFunction(key, _hashmap -> buckets);
+	node_t* list = _hashmap -> arrayOfLists[bucket];
+	while(list!=NULL){
+		if(strcmp(list -> kv -> key,key) == 0) return 1;
+		list = list -> next;
+	}
+	return 0;
 }
 
 // Insert a new key/value pair into a hashmap
@@ -71,7 +98,30 @@ int hashmap_hasKey(hashmap_t* _hashmap, char* key){
 //  - Attempting hashmap_insert on a NULL hashmap should exit(1)
 // This function should run in average-case constant time
 void hashmap_insert(hashmap_t* _hashmap,char* key,char* value){
-    // TODO
+    	if(_hashmap == NULL){
+                exit(1);
+        }
+	if(hashmap_hasKey(_hashmap, key)==1) return;
+	int bucket = _hashmap -> hashFunction(key, _hashmap -> buckets);
+	node_t* list = _hashmap -> arrayOfLists[bucket];
+	//make the node
+	pair_t* newpair = (pair_t*)malloc(sizeof(pair_t));
+        newpair -> key = (char*) malloc(strlen(key) * sizeof(char));
+        newpair -> value = (char*) malloc(strlen(value) * sizeof(char));
+	strcpy(newpair -> key, key);
+	strcpy(newpair -> value, value);
+	node_t* newnode = (node_t*)malloc(sizeof(node_t));
+        newnode -> next = NULL;
+        newnode -> kv = newpair;
+	//if there is no node
+	if(list==NULL){
+		_hashmap -> arrayOfLists[bucket] = newnode;
+		return;
+	}
+	// if there is already a node
+	while(list -> next!=NULL) list = list -> next;
+	list -> next = newnode;
+	return;
 }
 
 // Return a value from a key 
@@ -83,7 +133,14 @@ void hashmap_insert(hashmap_t* _hashmap,char* key,char* value){
 //  - Attempting hashmap_getValue on a NULL hashmap should exit(1)
 // This function should run in average-case constant time
 char* hashmap_getValue(hashmap_t* _hashmap, char* key){
-	//TODO
+	if(_hashmap == NULL){
+                exit(1);
+        }
+	if(hashmap_hasKey(_hashmap, key)==0) return NULL;
+	int bucket = _hashmap -> hashFunction(key, _hashmap -> buckets);
+	node_t* list = _hashmap -> arrayOfLists[bucket];
+	while(strcmp(list -> kv -> key, key) != 0) list = list -> next;
+	return list -> kv -> value;
 }
 
 // Remove a key from a hashmap
@@ -94,7 +151,30 @@ char* hashmap_getValue(hashmap_t* _hashmap, char* key){
 //  - Attempting hashmap_removeKey on a NULL hashmap should exit(1)
 // This function should run in average-case constant time
 void hashmap_removeKey(hashmap_t* _hashmap, char* key){
-	//TODO
+	if(_hashmap == NULL){
+                exit(1);
+        }
+	if(hashmap_hasKey(_hashmap, key)==0) return;
+	int bucket = _hashmap -> hashFunction(key, _hashmap -> buckets);
+        node_t* list = _hashmap -> arrayOfLists[bucket];
+	//if the first node has the key
+	if(strcmp(list -> kv -> key, key) == 0){
+		_hashmap -> arrayOfLists[bucket] = _hashmap -> arrayOfLists[bucket] -> next;
+		free(list -> kv -> key);
+		free(list -> kv -> value);
+		free(list -> kv);
+		free(list);
+		return;
+	}
+	node_t* remove = list -> next;
+	node_t* prev = list;
+	while(strcmp(remove -> kv -> key, key) != 0){
+		remove = remove -> next;
+		prev = prev -> next;
+	}
+	prev -> next = remove -> next;
+	free(remove);
+	return;
 }
 
 // Update a key with a new Value
@@ -105,7 +185,16 @@ void hashmap_removeKey(hashmap_t* _hashmap, char* key){
 //  - Attempting hashmap_update on a NULL hashmap should exit(1)
 // This function should run in average-case constant time
 void hashmap_update(hashmap_t* _hashmap, char* key, char* newValue){
-	//TODO
+	if(_hashmap == NULL){
+                exit(1);
+        }
+	if(hashmap_hasKey(_hashmap, key)==0) return;
+        int bucket = _hashmap -> hashFunction(key, _hashmap -> buckets);
+        node_t* list = _hashmap -> arrayOfLists[bucket];
+        while(strcmp(list -> kv -> key, key) != 0) list = list -> next;
+	list -> kv -> value = (char*) realloc(list -> kv -> value, sizeof(char) * strlen(newValue));
+	strcpy(list -> kv -> value, newValue);
+	return;
 }
 
 // Prints all of the keys in a hashmap
@@ -114,6 +203,23 @@ void hashmap_update(hashmap_t* _hashmap, char* key, char* newValue){
 //  - Attempting hashmap_printKeys on a NULL hashmap should exit(1)
 // This function should run in O(n) time
 void hashmap_printKeys(hashmap_t* _hashmap){
+	if(_hashmap == NULL){
+                exit(1);
+        }
 	//TODO
+	int i;
+	int j = (int) _hashmap -> buckets;
+	for(i=0; i<j; i++){
+		printf("Bucket %d:\n", i);
+		node_t* list = _hashmap -> arrayOfLists[i];
+		while(list!=NULL){
+			printf("\n");
+			printf("Key: %s\n", list -> kv -> key);
+			printf("Value: %s\n", list -> kv -> value);
+			list = list -> next;
+		}
+		printf("\n");
+	}
+	return;
 }
 
