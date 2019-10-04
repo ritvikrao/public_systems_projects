@@ -12,7 +12,7 @@ int unitTest1(){
     hashmap_printKeys(myHashmap);
     // Retrieve pig's value 
     printf("pig's value is %s\n",hashmap_getValue(myHashmap, "pig"));
-    //hashmap_update(myHashmap,"pig","a really cool farm animal");    
+    hashmap_update(myHashmap,"pig","a really cool farm animal");    
     printf("pig's value is updated to: %s\n",hashmap_getValue(myHashmap, "pig"));
     // Remove a key
     hashmap_removeKey(myHashmap,"pig");

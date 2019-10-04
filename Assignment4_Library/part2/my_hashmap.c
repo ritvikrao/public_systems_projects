@@ -195,8 +195,12 @@ void hashmap_update(hashmap_t* _hashmap, char* key, char* newValue){
         int bucket = _hashmap -> hashFunction(key, _hashmap -> buckets);
         node_t* list = _hashmap -> arrayOfLists[bucket];
         while(strcmp(list -> kv -> key, key) != 0) list = list -> next;
-	list -> kv -> value = (char*) realloc(list -> kv -> value, sizeof(char) * strlen(newValue));
-	strcpy(list -> kv -> value, newValue);
+	char* newval = (char*)malloc(sizeof(char) * sizeof(newValue));
+	strcpy(newval, newValue);
+	char* old =  list -> kv -> value;
+	list -> kv -> value = newval;
+	free(old);
+	
 	return;
 }
 
