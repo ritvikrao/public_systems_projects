@@ -5,12 +5,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+void parseFunction(char* input){
+	char* function = strtok(input, " ");
+	while(function!=NULL){
+		printf("%s\n", function);
+		function = strtok(NULL, " ");
+	}
+}
+
 int main(int argc, char** argv){
 	char* input = argv[1];
-	char* parseable = strtok(input, " ");
-	while(parseable!=NULL){
-		printf("%s\n", parseable);
-		parseable = strtok(NULL, " ");
-	}
+	parseFunction(input);
 	return 0;
 }
