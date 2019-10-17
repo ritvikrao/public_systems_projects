@@ -15,19 +15,19 @@ void help(char* args[]){
 }
 
 void sigint_handler(int sig){
+	wait(NULL);
 	write(1, "mini-shell terminated\n", 35);
 	exit(0);
 }
 
 void endShell(char* args[]){
-	exit(0);
+	exit(1);
 }
 
 void cd(char* args[]){
-	//TODO
 	int a;
 	a = chdir(args[1]);
-	printf("%d\n", a);
+	if(a!=0) printf("Invalid directory\n");
 	return;
 }
 
@@ -46,7 +46,7 @@ void otherCommands(char* args[]){
 	char *envp[] = {"HOME=/", "PATH=/bin:/usr/bin", NULL};
 	if(fork()==0){
 		execvp(args[0], args);
-		printf("should not get here\n");
+		printf("Command not found--Did you mean something else?\n");
 	        exit(1);
 	}else{
 	        wait(NULL);
@@ -70,6 +70,21 @@ void handleInputs(char* args[], char* builtins[], fun_ptr functions[]){
 	return;
 }
 
+void handleInputs2(char* args1[], char* args2[], char* builtins[], fun_ptr functions[]){
+	int i;
+        int found = 0;
+        while(builtins[i]!=NULL){
+		if(strcmp(args[0], builtins[i]) == 0){
+		        functions[i](args);
+	                found = 1;
+	                break;
+	        }
+		i++;
+		if(i>=3) break;
+	}
+        //TODO: search bin, then use pipe	
+}
+
 int main(int argc, char** argv){
 	signal(SIGINT, sigint_handler);
 	char inputs[BUFFER_SIZE];
@@ -91,17 +106,21 @@ int main(int argc, char** argv){
 		char second[BUFFER_SIZE];
 		char* args2[BUFFER_SIZE];
 		strcpy(first, split);
-		printf("%s\n", first);
+		//printf("%s\n", first);
 		split = strtok(NULL, "|");
+		int foundPipe = 0;
 		if(split!=NULL){
+			foundPipe = 1;
 			strcpy(second, split);
-			printf("%s\n", second);
+			//printf("%s\n", second);
 		}
 		//tokenize arguments
 		tokenize(first, args1);
 		tokenize(second, args2);
 		//process arguments
-		handleInputs(args1, builtins, functions);
+		if(foundPipe==0) handleInputs(args1, builtins, functions);
+		//functions in case there is a pipe
+
 	}	
 	return 0;
 }
