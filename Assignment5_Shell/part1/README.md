@@ -165,19 +165,19 @@ At a high level, implementing mini-shell takes the following components:
 -----------------------------------------------------
 NAME: 
 
-*edit me*
+*history*
 
 SYNOPSIS: 
 
-*edit me and add in a short description of the command and its usage*
+*Stores the past history commands*
 
 DESCRIPTION:
 
-*Write a longer description of what he command does*
+*The function returns the past 128 history calls, correct or otherwise, including the actual call to history.*
 
 NOTES:
 
-*Enter two or three sentences (minimum) in how you implemented the built-in command.*
+*I implemented this command by using a 128-string array as a global variable. I then treat it like a circular buffer, adding commands as I get them, and then incrementing a counter to point to the next available buffer mod 128. Up to 128, the order is from oldest to newest, but deeper in the history, which is unlikely, the oldest commands are rewritten with newer calls.*
 
 -----------------------------------------------------
 
