@@ -125,7 +125,7 @@ void handleTwoInputs(char* args1[], char* args2[], char* builtins[], fun_ptr fun
 		close(fd[0]);
 		//close(STDIN_FILENO);
 		dup2(fd[1], STDOUT_FILENO);
-		//close(fd[1]);
+		close(fd[1]);
 		int firstx = checkBuiltins(args1, builtins, functions);
 		if(firstx==0){
 			if(execvp(args1[0], args1)<0){
@@ -143,11 +143,15 @@ void handleTwoInputs(char* args1[], char* args2[], char* builtins[], fun_ptr fun
 			printf("Fork error\n");
 			return;
 		}
+		close(fd[1]);
+		//dup2(fd[0], STDIN_FILENO);
+		//close(fd[0]);
+		//wait(NULL);
 		if(split2==0){
 			//read from the pipe output to stdin
-			close(fd[1]);
+			//close(fd[1]);
 			dup2(fd[0], STDIN_FILENO);
-		        //close(fd[0]);
+		        close(fd[0]);
 			int secondx = checkBuiltins(args2, builtins, functions);
 		        if(secondx==0){
 				if(execvp(args2[0], args2)<0){
