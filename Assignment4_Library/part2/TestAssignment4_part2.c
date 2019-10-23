@@ -70,7 +70,7 @@ void unitTest3() {
 	TEST_ASSERT_EQUAL_STRING("foo1", hashmap_getValue(myHashmap, "e"));
 
 	hashmap_insert(myHashmap,"f", "foo1");
-	TEST_ASSERT_EQUAL_STRING("NULL", hashmap_getValue(myHashmap, "g"));
+	TEST_ASSERT_NULL(hashmap_getValue(myHashmap, "g"));
 
 	hashmap_delete(myHashmap);
 }
