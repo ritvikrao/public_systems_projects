@@ -3,16 +3,16 @@
 #include <stdio.h>
 #include <malloc.h>
 
-#define DATA_SIZE 1024
+#define ARRAY_ELEMENTS 1024
 
 int main(){
 
   // Allocate some data
-  int* data = (int*)malloc(DATA_SIZE);
+  int* data = (int*)malloc(ARRAY_ELEMENTS*sizeof(int));
   
   // Do something with the data
   int i=0;
-  for(i =0; i < DATA_SIZE; i++){
+  for(i =0; i < ARRAY_ELEMENTS; i++){
     data[i] = i;
   }
 
