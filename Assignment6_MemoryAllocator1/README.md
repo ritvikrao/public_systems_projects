@@ -1,20 +1,22 @@
 **TODO/EDITME** Check only one box for which allocation strategy you implemented (This helps the TAs with grading, we'll figure it out if you forget.)
 
-- [x] First-Fit
+- [] First-Fit
 - [x] Best-Fit allocator
 
 Other notes: *If you did anything above and beyond, or want to leave a TA a note you may do so here.*
 
 # TODO Please edit the following information in your assignment
 
-- Name:
-- How many hours did it take you to complete this assignment?
-- Did you collaborate with any other students/TAs/Professors?
+- Name:Ritvik Rao
+- How many hours did it take you to complete this assignment? 2
+- Did you collaborate with any other students/TAs/Professors? No
 - Did you use any external resources? (Cite them below)
   - tbd
   - tbd
 - (Optional) What was your favorite part of the assignment?
+My favorite part was learning more about how malloc works and how that affects memory usage.
 - (Optional) How would you improve the assignment?
+I would improve my implementation by addign functionality to merge/split adjacent blocks when necessary.
 
 # Logistics
 
