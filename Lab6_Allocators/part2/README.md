@@ -64,6 +64,7 @@ Take a moment to read the Cexcerpt.pdf (2 pages ~5 minutes reading) to get a bas
 **Discuss:** with your partner and write why you think `typedef long Align` was used. 
 
 **Write a 1-2 sentence answer here:**
+Typedef align is used to align the blocks at fixed address intervals. In this case, it aligns at 8-byte intervals to fit longs.
 
 ## Part 3 - Allocator building blocks
 
@@ -102,6 +103,7 @@ What do you think mlock is good for? This article discusses some of the tradeoff
 **Discuss** with your partner.
 
 **Write a 1-2 sentence answer here:**
+mlock is good for forcing parts of the virtual address space into RAM. In case a programmer would want some part of the memory to always be quickly accessible, mlock helps by making sure that some address ranges will not be place onto the hard disk.
 
 ## Part 4 - The simplest memory allocator (sbrk.c)
 
@@ -149,10 +151,12 @@ However, the problem with this allocator is that we do not have any notion over 
 **Discuss** with your partner what data structures you might use to keep track of memory. Record at least one below, but try to think of at least two in your discussion.
 
 **Write a 1-2 sentence answer here:**
+A good data structure would be a linked list, because it makes it easy to search the memory blocks and combine/split them when necessary.
 
 **Discuss** with your partner, do you think you will be able to use valgrind to monitor your custom memory allocator to detect potential memory leaks? 
 
 **Write a 1-2 sentence answer here:**
+Valgrind won't be a good way to check leaks because valgrind mostly checks for leaks by comparing allocations and frees. We are only using sbrk to extend the memory space, and when we call free, we are simply marking a box free, so valgrind cannot check for leaks where not all frees are called.
 
 ## Part 5 - strace
 
@@ -175,6 +179,7 @@ DESCRIPTION
 **Discuss** with your partner how many 'sbrk' system calls you see (they will show up as 'brk'), and write your answer below.
 
 **Write a 1-2 sentence answer here:**
+After the program begins, there are 24 brk calls, 3 for each malloc. For each malloc call, there are two brk calls with NULL arguments and 1 brk call to a memory address.
 
 ## Lab Deliverable
 
