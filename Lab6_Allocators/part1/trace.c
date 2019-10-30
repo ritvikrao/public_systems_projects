@@ -18,7 +18,36 @@
 #define ADDRESSES 1024	// We will generate 512 instructions
 #define RANGE 256	// The range of these instructions is a value 0-32
 
+// my cache friendly operation
+// uses 4 instructions that belong to different cache lines
+void FourTrace(int size, int range){
+	FILE* fp = fopen("FourTrace.txt", "w");
+	
+	for(int i=0; i < size; i++){
+                char* bin=intToBinaryString((i%4)*2,BITWIDTH);
+                fprintf(fp,"%s\n",bin);
+                free(bin);
+        }
 
+        fclose(fp);	
+	
+}
+
+// my cache hostile operation
+// uses 4 instructions
+// TODO
+
+void HostileTrace(int size, int range){
+	FILE* fp = fopen("HostileTrace.txt", "w");
+
+        for(int i=0; i < size; i++){
+                char* bin=intToBinaryString((i%4),BITWIDTH);
+                fprintf(fp,"%s\n",bin);
+                free(bin);
+        }
+
+        fclose(fp);	
+}
 
 // Generate a regular data access pattern
 //
@@ -114,6 +143,8 @@ int main(){
 	randomTrace(ADDRESSES,RANGE);
 	realisticTrace(ADDRESSES,RANGE);
 	singleTrace(ADDRESSES,42);
+	FourTrace(ADDRESSES, RANGE);
+	HostileTrace(ADDRESSES, RANGE);
 
 	// Some unit tests for the binary conversions if you want
 	// to play around with larger sets.
