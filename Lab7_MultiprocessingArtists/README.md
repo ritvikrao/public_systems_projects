@@ -126,7 +126,7 @@ Let us modify our Task 3:
 
 **Discuss with your partner:** (And write 1 sentence about where you think we are forgetting to reclaim memory)
 
-*Write your response here*
+*Valgrind showed that we freed the memory only in the parent, but we never free the memory in the children, which each have the copy of the allocated memory that is not freed.*
 
 
 
