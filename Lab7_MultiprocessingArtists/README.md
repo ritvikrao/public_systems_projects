@@ -35,7 +35,7 @@ Let us see how parallel we can get (i.e. how many artists) by analyzing our mach
   
 **Discuss with your partner:** (And write 1 sentence about your findings here)
 
-*Write your response here* 
+*Each of the 30+ machines have 12 cores available.* 
 
 ### Task 2 - fork() parallelism
 
