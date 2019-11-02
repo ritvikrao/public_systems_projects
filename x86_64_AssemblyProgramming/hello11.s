@@ -83,9 +83,9 @@ _iterate:
     movq $WRITE,%rax           
     movq $STDOUT,%rdi
     # In C code it looks like:
-    # %rsi = ones[%r10] // where '%rsi is our counter
-    #                   // The offset when we increse rsi is
-    #                   // 8 bytes at a time
+    # %rsi = lessBoring[%r10] // where '%rsi is our counter
+    #                       // The offset when we increse rsi is
+    #                       // 8 bytes at a time
     # Note what is different here, we are offsetting by
     # 8, because a .quad is 8 bytes for our 'lessBoring'
     # data.
