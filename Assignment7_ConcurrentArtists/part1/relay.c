@@ -9,7 +9,9 @@
 #include <semaphore.h> // new library!
 
 // TODO: Initialize any semaphores here
-// ...
+sem_t sem_global;
+sem_t sem_global2;
+sem_t sem_global3;
 
 
 // A function to simulate a thread doing some work
@@ -24,22 +26,28 @@ void make_runner_run(){
 void *Runner1(void *vargp){
         printf("Usain Bolt has taken off!\n");
         make_runner_run();
+	sem_post(&sem_global);
     return NULL;
 }
 
 void *Runner2(void *vargp){
+	sem_wait(&sem_global);
         printf("Michael Johnson has taken off\n");
         make_runner_run();
+	sem_post(&sem_global2);
         return NULL;
 }
 
 void *Runner3(void *vargp){
+	sem_wait(&sem_global2);
         printf("Allyson Felix has taken off\n");
         make_runner_run();
+	sem_post(&sem_global3);
         return NULL;
 }
 
 void *Runner4(void *vargp){
+	sem_wait(&sem_global3);
         printf("Carmelita Jeter runs the anchor leg to the finish line!\n");
         make_runner_run();
         return NULL;
@@ -51,7 +59,9 @@ int main(){
         pthread_t tids[4];
         // Initialize semaphore(s)
         // TODO: Use sem_init for each of your semaphores
-
+	sem_init(&sem_global, 0, 0);
+	sem_init(&sem_global2, 0, 0);
+	sem_init(&sem_global3, 0, 0);
         // Create our threads
         pthread_create(&tids[0],NULL,Runner1,NULL);
         pthread_create(&tids[1],NULL,Runner2,NULL);
@@ -64,6 +74,8 @@ int main(){
         pthread_join(tids[3],NULL);
         // Destroy our semaphore
         // TODO: Use sem_destor(...) for each of your semaphores
-
+	sem_destroy(&sem_global);
+	sem_destroy(&sem_global2);
+	sem_destroy(&sem_global3);
         return 0;
 }
