@@ -146,7 +146,7 @@ Let us now have our artists work on one giant masterpiece (as originally intende
 
 **Discuss with your partner:** (And write 1 sentence about the difference between fork and vfork)
 
-*Write your response here*
+*The difference between fork and vfork is that vfork creates children that share the memory stack with the parent instead of copying it.*
 
 Scroll down a bit to see the answers after reading the man page.
 
