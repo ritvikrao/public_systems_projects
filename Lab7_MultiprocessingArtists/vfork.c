@@ -6,22 +6,26 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+char colors[64][64*3];
+
 void paint(int workID){ 
-	printf("Artist %d is painting\n",workID);
+	//printf("Artist %d is painting\n",workID);
+	int x;
+	for(x=0; x<64*3; ++x){
+		colors[workID][x]= workID;
+	}
 }
 
 int main(int argc, char** argv){
 
-        int numberOfArtists = 8;
+        int numberOfArtists = 64;
 	
 	pid_t pid;
-
-	int* integers = malloc(sizeof(int)*8000);
 
 	int i;
 	for(i =0; i < numberOfArtists; i++){
 
-		pid = fork();
+		pid = vfork();
 
 	if(pid== 0){
 		paint(i);
@@ -30,12 +34,22 @@ int main(int argc, char** argv){
 
         }
 	
-	pid_t wpid;
-        int status = 0;
-        while ((wpid = wait(&status)) > 0);
 
-        printf("parent is exiting(last artist out!)\n");
+        //printf("parent is exiting(last artist out!)\n");
 	
-	free(integers);
+	FILE *fp;
+	fp = fopen("vfork.ppm","w+");
+	fputs("P3\n",fp);
+	fputs("64 64\n",fp);
+	fputs("255\n",fp);
+	int j;
+	for(i =0; i < 64;i++){
+		for(j =0; j < 64*3; j++){
+			fprintf(fp,"%d",colors[i][j]);
+			fputs(" ",fp);		
+		}
+		fputs("\n",fp);
+	}
+	fclose(fp);
 	return 0;
 }
