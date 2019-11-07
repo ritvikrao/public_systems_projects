@@ -150,7 +150,7 @@ void* paint(void* args){
     }
 }
 int startingSpotsX[]={20,40,60,80,100,120,140,160,180,200};
-int startingSpotsY[]={50,100,150,200,250};
+int startingSpotsY[]={45,90,135,180,225};
 
 // ================== Program Entry Point ============
 int main(){
@@ -213,7 +213,7 @@ int main(){
 	for(i=0; i<rookieArtists; ++i){
 		moreArtists[i]=malloc(sizeof(artist_t));
                 moreArtists[i]->x=startingSpotsX[i/5];
-                moreArtists[i]->y=startingSpotsY[i/10];
+                moreArtists[i]->y=startingSpotsY[i%5];
                 moreArtists[i]->r=(rand()%256);
                 moreArtists[i]->g=(rand()%256);
                 moreArtists[i]->b=(rand()%256);
