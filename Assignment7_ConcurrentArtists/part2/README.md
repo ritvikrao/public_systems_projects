@@ -161,7 +161,7 @@ This means you need to enforce some locking mechanism.
 
 **Discuss(in a few sentences)** how starvation may occur in the above program, and how you would possibly fix it? (You may fix it in your implementation if you like--the art may become more beautiful!)
 
-*edit and add your response here*
+*Starvation occurrs when a painter's current location is surrounded by already painted pixels. In the above program, the painter is then unable to move in any direction and will probably end up with well short of 5000 pixels painted. To fix this, it is important to realize that the artists can't jump to locations and can't paint over each other's work, so the only way to get out of a starvation is to backtrack onto a pixel that the artist already painted.*
 
 ## Rubric
 
