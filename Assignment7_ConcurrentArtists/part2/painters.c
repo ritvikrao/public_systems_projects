@@ -140,6 +140,7 @@ void* paint(void* args){
 	            painter->x = currentX;
 	            painter->y = currentY;
 	        }
+		pthread_mutex_unlock(&canvas[painter->x][painter->y].lock);
 		++actuallyPainted;
 	}
 	else{
