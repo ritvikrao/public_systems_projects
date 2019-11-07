@@ -161,7 +161,7 @@ This means you need to enforce some locking mechanism.
 
 **Discuss(in a few sentences)** how starvation may occur in the above program, and how you would possibly fix it? (You may fix it in your implementation if you like--the art may become more beautiful!)
 
-*Starvation occurrs when a painter's current location is surrounded by already painted pixels. In the above program, the painter is then unable to move in any direction and will probably end up with well short of 5000 pixels painted. To fix this, it is important to realize that the artists can't jump to locations and can't paint over each other's work, so the only way to get out of a starvation is to backtrack onto a pixel that the artist already painted.*
+*Starvation occurrs when a painter's current location is surrounded by already painted pixels. In the above program, the painter is then unable to move in any direction and will probably end up with well short of 5000 pixels painted. To fix this, it is important to realize that the artists can't jump to locations and can't paint over each other's work, so the only way to get out of a starvation is to backtrack onto a pixel that the artist already painted. The given logic only paints over a pixel if it is white, so it needs to also paint over a pixel when it is the same color. Since there are only 65,536 pixels in the canvas, not every artist will get to paint 5,000 pixels. Therefore, it can help to have a global variable to count the number of pixels painted, and stop painting when all of the pixels are painted. It will take a long time to terminate if moves are chosen randomly, but it will eventually terminate.*
 
 ## Rubric
 
