@@ -21,9 +21,8 @@
 
 // TODO: Implement this function
 void print__m256(__m256 data){
-	//
-	// Your implementation can be done in 2 lines
-	//
+	float* f = (float*) &data;
+  printf("%f %f %f %f %f %f %f %f\n", f[0],f[1],f[2],f[3],f[4],f[5],f[6],f[7]);
 }
 
 
@@ -47,8 +46,8 @@ int main(){
 	//
 	// Your output should include a vector of all zeroes and a vector all with 42.00000.
 	
-	__m256 test1 = ...
-	__m256 test2 = ...
+	__m256 test1 = _mm256_setzero_ps();
+	__m256 test2 = _mm256_set1_ps(42.0);
 
 	printf("=========Printing 0's and 42's=========\n\n");
 	print__m256(test1);
@@ -67,7 +66,7 @@ int main(){
 	//
 	// Try to use each of these commands and print out the result.
 
-	test3 = ...
+	__m256 test3 = _mm256_set_ps(0,1,2,3,4,5,6,7);
 	
 	printf("=========Printing _mm256_set_ps=========\n\n");
 	print__m256(test3);
@@ -90,7 +89,7 @@ int main(){
 	// is aligned, but typically in multiples of 8 or 16 bits. Let us make sure it is always in 
 	// 32 bits using aligned_malloc.
 	
-	float* aligned_32 = (float*)aligned_alloc(4, 8 * sizeof(float));
+	float* aligned_32 = (float*)aligned_alloc(32, 8 * sizeof(float));
 
 	// Let's break that function down.
 	// First, we cast to a float*, just as we would have done with a regular malloc.

@@ -25,8 +25,8 @@ void print__m256(__m256 data){
 }
 
 void print__m256i(__m256i data){
-	// 2 lines here
-	//
+	int*i = (int*)&data;
+	printf("%d %d %d %d %d %d %d %d\n", i[0],i[1],i[2],i[3],i[4],i[5],i[6],i[7]);
 }
 
 int main(){

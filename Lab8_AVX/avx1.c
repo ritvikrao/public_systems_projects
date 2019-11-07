@@ -56,9 +56,9 @@ int main(){
 	// __m256i storse 256 bits of integer data
 	//
 	// (2) Question: If a float is 32 bits, how many floats can I store in a 256 bit
-	// vector?
+	// vector? 8 floats
 	//
-	// (3) Question: If a double is 64 bits, how many doubles can I store in a 256 bit vector?
+	// (3) Question: If a double is 64 bits, how many doubles can I store in a 256 bit vector? 4 doubles
 	//
 	//
 	

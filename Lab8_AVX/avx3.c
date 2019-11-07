@@ -49,9 +49,9 @@ int main(){
 	// Try loading some data into registers 'a' and 'b' which we previously learned how to do
 	// Then store the result of their addition in 'dst'.
 	
-	__m256 a = ...
-	__m256 b = _...
-	__m256 dst = ...
+	__m256 a = _mm256_set1_ps(42.0);
+	__m256 b = _mm256_set1_ps(36.0);
+	__m256 dst = _mm256_add_ps(a,b);
 
 	print__m256(dst);
 
@@ -83,7 +83,7 @@ int main(){
 	
 	__m256 float_a = _mm256_set_ps(1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0);
 	__m256 float_b = _mm256_set_ps(10.0,10.0,10.0,10.0,10.0,10.0,10.0,10.0);
-	__m256 float_dst = ...
+	__m256 float_dst = _mm256_mul_ps(float_a, float_b);
 
 	print__m256(float_dst);	
 	

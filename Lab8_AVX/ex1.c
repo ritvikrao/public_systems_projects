@@ -19,8 +19,20 @@ void print__m256(__m256 data){
 }
 
 int main(){
-
-
+  FILE *fp;
+  fp = fopen("data.txt", "r");
+  int buff[256];
+  int i;
+  while(fscanf(fp, "%d", &buff[i])!=EOF){
+    ++i;
+  }
+  fclose(fp);
+  int j;
+  
+  for(j=0; j<i; j+=8){
+    __m256 data = _mm256_set_ps(buff[j+7], buff[j+6], buff[j+5], buff[j+4], buff[j+3], buff[j+2], buff[j+1], buff[j]);
+    __m256 result = 
+  }
 
 	return 0;
 }
