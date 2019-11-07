@@ -134,13 +134,14 @@ void* paint(void* args){
 	                canvas[painter->x][painter->y].r = painter->r;
 	                canvas[painter->x][painter->y].g = painter->g;
 	                canvas[painter->x][painter->y].b = painter->b;
+                  pthread_mutex_unlock(&canvas[painter->x][painter->y].lock);               
 	        }else{
 	        // If we cannot paint the pixel, then we backtrack
 	        // to a previous pixel that we own.
 	            painter->x = currentX;
 	            painter->y = currentY;
+              pthread_mutex_unlock(&canvas[painter->x][painter->y].lock);           
 	        }
-		pthread_mutex_unlock(&canvas[painter->x][painter->y].lock);
 		++actuallyPainted;
 	}
 	else{
