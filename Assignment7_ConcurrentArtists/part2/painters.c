@@ -122,23 +122,32 @@ void* paint(void* args){
         // at first glance this seems okay, but convince yourself
         // we can still have data races.
         // I suggest investigating a 'trylock'
+
+	if(pthread_mutex_trylock(&canvas[painter->x][painter->y].lock)==0){
  
-        // Try to paint
-        // paint the pixel if it is white.
-        if( canvas[painter->x][painter->y].r == 255 &&
-            canvas[painter->x][painter->y].g == 255 &&
-            canvas[painter->x][painter->y].b == 255){
-                canvas[painter->x][painter->y].r = painter->r;
-                canvas[painter->x][painter->y].g = painter->g;
-                canvas[painter->x][painter->y].b = painter->b;
-        }else{
-        // If we cannot paint the pixel, then we backtrack
-        // to a previous pixel that we own.
-            painter->x = currentX;
-            painter->y = currentY;
-        }
+	        // Try to paint
+	        // paint the pixel if it is white.
+	        if( canvas[painter->x][painter->y].r == 255 &&
+	            canvas[painter->x][painter->y].g == 255 &&
+	            canvas[painter->x][painter->y].b == 255){
+	                canvas[painter->x][painter->y].r = painter->r;
+	                canvas[painter->x][painter->y].g = painter->g;
+	                canvas[painter->x][painter->y].b = painter->b;
+	        }else{
+	        // If we cannot paint the pixel, then we backtrack
+	        // to a previous pixel that we own.
+	            painter->x = currentX;
+	            painter->y = currentY;
+	        }
+	}
+	else{
+		 painter->x = currentX;
+                 painter->y = currentY;
+	}
     }
 }
+int startingSpotsX[]={20,40,60,80,100,120,140,160,180,200};
+int startingSpotsY[]={50,100,150,200,250};
 
 // ================== Program Entry Point ============
 int main(){
@@ -192,12 +201,23 @@ int main(){
 	pthread_create(&Donatello_tid,NULL,(void*)paint,Donatello);
 	pthread_create(&Raphael_tid,NULL,(void*)paint,Raphael);
 	pthread_create(&Leonardo_tid,NULL,(void*)paint,Leonardo);
-
+	
+	int i;
     // TODO: Add 50 more artists 
-    // int rookieArtists = 50;
-    // pthread_t moreArtists_tid[rookieArtists];
-	// artist_t* moreArtists = malloc(..);
-    // for(int i =0; i < rookieArtists; ++i){
+	int rookieArtists = 50;
+	pthread_t moreArtists_tid[rookieArtists];
+	artist_t** moreArtists = malloc(50*sizeof(artist_t*));
+	for(i=0; i<rookieArtists; ++i){
+		moreArtists[i]=malloc(sizeof(artist_t));
+                moreArtists[i]->x=startingSpotsX[i/5];
+                moreArtists[i]->y=startingSpotsY[i/10];
+                moreArtists[i]->r=(rand()%256);
+                moreArtists[i]->g=(rand()%256);
+                moreArtists[i]->b=(rand()%256);
+	}
+        for(i =0; i < rookieArtists; ++i){
+		pthread_create(&moreArtists_tid[i], NULL, (void*)paint, moreArtists[i]);
+	}
 
 	// Join each with the main thread.  
 	// Do you think our ordering of launching each thread matters?
@@ -207,7 +227,9 @@ int main(){
 	pthread_join(Leonardo_tid, NULL);		   
 
     // TODO: Add the join the 50 other artists threads here	
-    // for (...)
+       	for (i=0; i<rookieArtists; ++i){
+		pthread_join(moreArtists_tid[i], NULL);
+	}
 
     // Save our canvas at the end of the painting session
 	outputCanvas();
@@ -219,6 +241,9 @@ int main(){
     free(Leonardo);
 
     // TODO: Free any other memory you can think of
-
+    for(i=0; i<rookieArtists; ++i){
+		free(moreArtists[i]);
+	}
+	free(moreArtists);
 	return 0;
 }
