@@ -152,6 +152,16 @@ void* paint(void* args){
 }
 int startingSpotsX[]={20,40,60,80,100,120,140,160,180,200};
 int startingSpotsY[]={45,90,135,180,225};
+int rookieRGB[10][3]={{254,192,203},
+			{0,254,0},
+      {150,75,0},
+      {254,0,254},
+      {224,17,195},
+      {128,43,36},
+      {1,246,8},
+      {76,230,123},
+      {55,32,86},
+      {183,156,107}};
 
 // ================== Program Entry Point ============
 int main(){
@@ -215,9 +225,9 @@ int main(){
 		moreArtists[i]=malloc(sizeof(artist_t));
                 moreArtists[i]->x=startingSpotsX[i/5];
                 moreArtists[i]->y=startingSpotsY[i%5];
-                moreArtists[i]->r=(rand()%256);
-                moreArtists[i]->g=(rand()%256);
-                moreArtists[i]->b=(rand()%256);
+                moreArtists[i]->r=rookieRGB[i%10][1]+(rand()%(255-rookieRGB[i%10][1]));
+                moreArtists[i]->g=rookieRGB[i%10][2]+(rand()%(255-rookieRGB[i%10][2]));
+                moreArtists[i]->b=rookieRGB[i%10][3]+(rand()%(255-rookieRGB[i%10][3]));
 	}
         for(i =0; i < rookieArtists; ++i){
 		pthread_create(&moreArtists_tid[i], NULL, (void*)paint, moreArtists[i]);
