@@ -14,8 +14,8 @@
 
 // print (Note, you may need to change this function or write another for your data)
 void print__m256(__m256 data){
-	float*f = (float*)&data;
-	printf("%f %f %f %f %f %f %f %f\n", f[0],f[1],f[2],f[3],f[4],f[5],f[6],f[7]);
+	int*f = (int*)&data;
+	printf("%d %d %d %d %d %d %d %d\n", f[0],f[1],f[2],f[3],f[4],f[5],f[6],f[7]);
 }
 
 int main(){
@@ -29,9 +29,11 @@ int main(){
   fclose(fp);
   int j;
   
+  __m256 ones = _mm256_set1_epi32(1);
   for(j=0; j<i; j+=8){
-    __m256 data = _mm256_set_ps(buff[j+7], buff[j+6], buff[j+5], buff[j+4], buff[j+3], buff[j+2], buff[j+1], buff[j]);
-    __m256 result = 
+    __m256 data = _mm256_set_epi32(buff[j+7], buff[j+6], buff[j+5], buff[j+4], buff[j+3], buff[j+2], buff[j+1], buff[j]);
+    __m256 result = _mm256_add_epi32(ones,data);
+    print__m256(result);
   }
 
 	return 0;
