@@ -56,6 +56,7 @@ int main(){
 - Run the program with `./omp1`.
 
 **Discuss with your partner and answer:** *answer in a sentence here, what your output is, and whether the expected output is what you would expect.*
+*The output returns the hello worlds of different processors. The expected output would return each thread in order, but this is not true because some threads are faster than others.*
 
 #### Example 2 - For-loops
 
@@ -88,6 +89,7 @@ int main(){
 
 
 **Discuss with your partner and answer:** *Why is our output not ordered?*
+*The output is not ordered because some of the processors complete the task faster than others, which means that the fastest processes return first.*
 
 #### Example 3 - Synchronization
 
