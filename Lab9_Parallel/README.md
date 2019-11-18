@@ -233,6 +233,7 @@ Now we are going to try to solve this problem in parallel.
 In general, this is a type of [Reduction](http://www.drdobbs.com/architecture-and-design/parallel-pattern-7-reduce/222000718) algorithm, in that we are chunking our problem and solving pieces of it, and then rebuilding the result.
 
 **Discuss with your partner and answer:** *What is a strategy for solving this problem? Try to avoid false sharing by adding the amount of padded bits needed programmatically*
+*To solve this problem, it is important to start by parallelizing the for loop, but also add some padding to take up a whole cache line and avoid false sharing. To pad the data, one solution is to make a 2D array, one for each thread. In each row of the array, the sum of the process will be stored in the first space, with the rest of the row being used for padding.*
 
 Now implement in [omp5.c](./omp5.c) your strategy and time it:** Implement your strategy and fill out the table below with how much time it takes per thread.
 
