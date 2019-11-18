@@ -9,12 +9,14 @@ void* some_thread1(){
   char* string1 = (char*) malloc(5*sizeof(char));
   strcpy(string1, "hello");
   shared_data[0] = string1;
+  return NULL;
 }
 
 void* some_thread2(){
   char* string2 = (char*) malloc(5*sizeof(char));
   strcpy(string2, "there");
   shared_data[1] = string2;
+  return NULL;
 }
 
 int main(){
