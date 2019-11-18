@@ -194,9 +194,8 @@ int fib_recursive(int n){
 **Run the program above**: With `time ./omp4`
 
 Note that you may not see any performance gain--why?
-*There is little performance gain because you are using a fibonacci implementation that does a lot of repeat calculations. Also, there are a lot of thread splits that are very expensive. Also, the taskwait command before x+y means that slow threads can slow down the program.*
 
-**Discuss with your partner and answer:** *answer in a sentence here, why there may not be any performance gain here*
+**Discuss with your partner and answer:** *There is little performance gain because you are using a fibonacci implementation that does a lot of repeat calculations. Also, there are a lot of thread splits that are very expensive. Also, the taskwait command before x+y means that slow threads can slow down the program.*
 
 #### Example 5 - Computing PI 3.1415....
 
@@ -239,6 +238,7 @@ Now implement in [omp5.c](./omp5.c) your strategy and time it:** Implement your 
 
 Note: You can revisit [Tim Mattson's video](https://www.youtube.com/watch?v=OuzYICZUthM&list=PLLX-Q6B8xqZ8n8bwjGdzBJ25X2utwnoEG&index=7) if you get stuck for one potential solution.
 
+*all in real time*
 <table>
   <tbody>
     <tr>
@@ -247,9 +247,9 @@ Note: You can revisit [Tim Mattson's video](https://www.youtube.com/watch?v=OuzY
       <th>8 threads(ms)</th>          
     </tr>
     <tr>
-      <td>FILL IN HERE</td>
-      <td>FILL IN HERE</td>
-      <td>FILL IN HERE</td>
+      <td>1384</td>
+      <td>717</td>
+      <td>203</td>
     </tr>   
   </tbody>
 </table>
