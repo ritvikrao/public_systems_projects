@@ -194,7 +194,7 @@ int fib_recursive(int n){
 **Run the program above**: With `time ./omp4`
 
 Note that you may not see any performance gain--why?
-*There is little performance gain because you are using a fibonacci implementation that does a lot of repeat calculations. Also, there are a lot of thread splits that are very expensive.*
+*There is little performance gain because you are using a fibonacci implementation that does a lot of repeat calculations. Also, there are a lot of thread splits that are very expensive. Also, the taskwait command before x+y means that slow threads can slow down the program.*
 
 **Discuss with your partner and answer:** *answer in a sentence here, why there may not be any performance gain here*
 
