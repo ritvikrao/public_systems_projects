@@ -1,13 +1,15 @@
 # TODO Please edit the following information in your assignment
 
-- Name:
-- How many hours did it take you to complete this assignment?
-- Did you collaborate with any other students/TAs/Professors?
+- Name: Ritvik Rao
+- How many hours did it take you to complete this assignment? 5
+- Did you collaborate with any other students/TAs/Professors? No
 - Did you use any external resources? (Cite them below)
-  - tbd
+  - None
   - tbd
 - (Optional) What was your favorite part of the assignment?
+I liked working with the pthreads and mutexes the most.
 - (Optional) How would you improve the assignment?
+I wish this assignment had more guidance with pointer arithmetic.
 
 # Logistics
 
