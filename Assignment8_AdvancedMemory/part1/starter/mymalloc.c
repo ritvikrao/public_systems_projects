@@ -21,10 +21,11 @@ typedef struct block{
 #define BLOCK_SIZE sizeof(block_t)
 
 block_t** block_head = NULL; // global to define the linked lists of blocks
-pthread_mutex_t locks[48];
+pthread_mutex_t locks[128];
 
 block_t* findOptimalFreeBlock(size_t s){
   int cpu = sched_getcpu();
+  pthread_mutex_lock(&locks[cpu]);
 	block_t* block_list = block_head[cpu];
 	block_t* optimal_block = NULL;
 	while(block_list!=NULL){
@@ -38,6 +39,7 @@ block_t* findOptimalFreeBlock(size_t s){
 		}
 	block_list = block_list -> next;
 	}
+  pthread_mutex_unlock(&locks[cpu]);
 	return optimal_block;
 }
 
@@ -56,18 +58,24 @@ block_t* getLastBlock(){
 }
 
 void splitBlock(block_t* block, size_t s){
-	int spaceLeft = block -> size - s;
- //TODO: figure this out
-   block_t* additionalBlock = block + s + sizeof(block_t);
+  int cpu = sched_getcpu();
+  pthread_mutex_lock(&locks[cpu]);
+	int spaceLeft = (block -> size) - s;
+   void* tempBlock = (void*) block;
+   tempBlock += s + sizeof(block_t);
+   block_t* additionalBlock = (block_t*) tempBlock;
    additionalBlock -> size = block -> size - s - sizeof(block_t);
    additionalBlock -> next = block -> next;
    additionalBlock -> free = 1;
    block -> size = s;
    block -> next = additionalBlock;
+   pthread_mutex_unlock(&locks[cpu]);
+   return;
 }
 
 void* extendMemory(size_t s){
   int cpu = sched_getcpu();
+  pthread_mutex_lock(&locks[cpu]);
 	//get to the last block
 	block_t* last = getLastBlock();
 	//extend the memory
@@ -75,6 +83,7 @@ void* extendMemory(size_t s){
   	if(s>4095){
 		newBlock = (block_t*) mmap(0, s, PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, -1, 0);
      if ((void*) newBlock == (void*) -1){
+     pthread_mutex_unlock(&locks[cpu]);
 		  return NULL;
 	  }
 		newBlock -> size = (s/4096)*4096; 
@@ -82,6 +91,7 @@ void* extendMemory(size_t s){
 	else{
 		newBlock = sbrk(s + BLOCK_SIZE);
    if ((void*) newBlock == (void*) -1){
+    pthread_mutex_unlock(&locks[cpu]);
 		return NULL;
 	  }
      newBlock -> size = s;
@@ -97,6 +107,7 @@ void* extendMemory(size_t s){
  if(newBlock -> size >= s + sizeof(block_t) + 4){
      splitBlock(newBlock, s);
    }
+   pthread_mutex_unlock(&locks[cpu]);
 	return (newBlock+1);
 }
 
@@ -109,19 +120,15 @@ void* mymalloc(size_t s){
        pthread_mutex_init(&locks[x], 0);
      }
    }
-   int cpu = sched_getcpu();
-   pthread_mutex_lock(&locks[cpu]);
 	//iterate to find best block
 	block_t* bestBlock = findOptimalFreeBlock(s);
 	//if the size is found, allocate the memory and return the pointer
 	if(bestBlock != NULL){
 		bestBlock -> free = 0;
 		printf("malloc %zu bytes\n",s);
-		//TODO: add splitting logic
    if(bestBlock -> size >= s + sizeof(block_t) + 4){
      splitBlock(bestBlock, s);
    }
-   pthread_mutex_unlock(&locks[cpu]);
 		return(bestBlock+1);//+1 will get us to the actual memory
 	}
 	//if the size is not found, create new block and memory
@@ -131,7 +138,6 @@ void* mymalloc(size_t s){
 	}
  //TODO: add splitting logic
 	printf("malloc %zu bytes\n",s);
- pthread_mutex_unlock(&locks[cpu]);
 	return p;
 }
 
