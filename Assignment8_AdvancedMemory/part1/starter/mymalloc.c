@@ -86,7 +86,7 @@ void* extendMemory(size_t s){
      pthread_mutex_unlock(&locks[cpu]);
 		  return NULL;
 	  }
-		newBlock -> size = (s/4096)*4096; 
+		newBlock -> size = (((s-1)/4096)+1)*4096; 
 	}
 	else{
 		newBlock = sbrk(s + BLOCK_SIZE);
@@ -105,7 +105,9 @@ void* extendMemory(size_t s){
 		last -> next = newBlock;
 	}
  if(newBlock -> size >= s + sizeof(block_t) + 4){
+     pthread_mutex_unlock(&locks[cpu]);
      splitBlock(newBlock, s);
+     pthread_mutex_lock(&locks[cpu]);
    }
    pthread_mutex_unlock(&locks[cpu]);
 	return (newBlock+1);
