@@ -94,8 +94,14 @@ int main(int argc, char *argv[]){
 **Discuss with your partner:** 
 
 - *In a sentence, what does types.h contain?*
+- *Types.h contains the definitions of types such as uint and ushort for use in xv6.*
 - *In a sentence, what does stat.h contain?*
+- *stat.h contains the definition of a struct that keeps track of a file's type, size, disk location, inode number, and
+number of links to the file.*
 - *In a sentence, what does user.h contain? List some functions that you have used before*
+- *user.h contains the system calls for xv6. We hvae used many of the string operations such as 
+printf, strcpy, strchr, and others. We have also used malloc, free, and sbrk for memory allocation, and we have also done
+things such as mkdir and dup. *
 
 # Part 5 - Implementing a System Call (Extending xv6 further).
 
