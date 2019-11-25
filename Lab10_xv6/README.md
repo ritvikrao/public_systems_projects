@@ -6,7 +6,7 @@ The tasks for today's lab are:
 
 * [x] Install an emulator
 * [x] Download xv6 for github, and build an img file using 'make'
-* [ ] Modify an unfamiliar piece of source code (i.e. xv6)
+* [X] Modify an unfamiliar piece of source code (i.e. xv6)
 
 # Part 1 - Installation and running xv6
 
