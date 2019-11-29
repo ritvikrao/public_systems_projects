@@ -24,23 +24,23 @@ Processes:
 
 ### Processes
 
-1. In which file does the the process table exist? *your answer here*
-2. What is the struct name of the process table? *your answer here*
-3. When there is a context switch from one process to another, where are the values of the registers of the old process saved? *your answer here*
+1. In which file does the the process table exist? *proc.c*
+2. What is the struct name of the process table? *ptable*
+3. When there is a context switch from one process to another, where are the values of the registers of the old process saved? *struct context, in proc.h*
 4. What are the 6 possible states of a process?  Also, give a brief phrase describing the purpose of each state.
-	1. *your answer here*
-	2. *your answer here*
-	3. *your answer here*
-	4. *your answer here*
-	5. *your answer here*
-	6. *your answer here*
-5. What is the function that does a context switch between two processes? *your answer here*
-6. Explain how the context switch function works (Note, this "function" *may* be in an assembly file). *your answer here*
+	1. *UNUSED means the process is not currently in use and can be allocated to the kernel*
+	2. *EMBRYO means the process is in the initial state required to run in the kernel, but not yet loaded into memory.*
+	3. *SLEEPING means the process is loaded into memory, but the required resources are not available yet.*
+	4. *RUNNABLE means the process is loaded into memory and can be run at any time by the kernel.*
+	5. *RUNNING means the process is currently being run by the kernel.*
+	6. *ZOMBIE means the process has terminated but is still shown in the process table.*
+5. What is the function that does a context switch between two processes? *swtch, in swtch.S*
+6. Explain how the context switch function works (Note, this "function" *may* be in an assembly file). *The context switch function starts by saving the old registers by pushing them onto the stack. Then, the function switches the stacks by changing the stack pointer, and finishes by saving the new registers by popping them off the stack.*
 
 ### Process Startup and running
 
-1. What function from 'main.c' creates the first user process? *your answer here*
-2. Where do we actually start running processes in our code? That is, what is the actual function that has an infinite loop for running processes? *your answer here*
+1. What function from 'main.c' creates the first user process? *userinit, which is defined in proc.c*
+2. Where do we actually start running processes in our code? That is, what is the actual function that has an infinite loop for running processes? *The function is the scheduler (void scheduler), located in proc.c. It has an infinite for loop.*
 
 ### Files and File Descriptors:
 
@@ -51,16 +51,16 @@ offset into the file), to the i-node. Note: What I call a "file handle", UNIX xv
 
 1.  The function 'sys_open()' returns a file descriptor 'fd'. To do this, it opens a new file handle 'filealloc()', and it allocates a new file descriptor with 'fdalloc()'. Where is the file descriptor allocated?  
 	- Hint: You will see that the file descriptor is one entry in an array in an important struture you have already looked at.
-	- *your answer here*
+	- *It is allocated in the current process's list of open files in the proc struct.*
 2. What is the algorithm used to choose which entry in the array to use for the new file descriptor?
     	- Note: The name 'NOFILE' means "file number".  "No." is sometimes used as an abbreviation for the word "number".
-	- *your answer here*
+	- *The new descriptor is added to the first available location in the array.*
 3.  As you saw above, the file descriptor turned out to be an index in an array.  What is the name of the array for which the file descriptor is an index?  Also, what is the type of one entry in that array.
-	- *your answer here*
+	- *The array is ofile, and the type is a pointer to a struct file.*
 4.  The type that you saw in the above question is what I was calling a "file handle" (with an offset into the file, etc.). What is the name of the field that holds the offset into the file? We saw it in the function 'sys_open()' (*hint, it's towards the bottom of the function*).
-	- *your answer here*
+	- *The name of the field is off, located in the file struct.*
 5.  The file handle type was initialized to 'FD_INODE' in the sys_open function.  What are the other types that it could have been initialized to (*hint, look for the file struct*)?
-	- *your answer here*
+	- *FD_NONE and FD_PIPE*
     
 # Part 2 - Proc Priority modification
 
