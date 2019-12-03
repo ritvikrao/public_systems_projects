@@ -1,13 +1,15 @@
 # TODO Please edit the following information in your assignment
 
-- Name:
-- How many hours did it take you to complete this assignment?
-- Did you collaborate with any other students/TAs/Professors?
+- Name: Ritvik Rao
+- How many hours did it take you to complete this assignment? 2
+- Did you collaborate with any other students/TAs/Professors? No
 - Did you use any external resources? (Cite them below)
   - tbd
   - tbd
 - (Optional) What was your favorite part of the assignment?
+I liked learning how to modify an OS to implement a system call.
 - (Optional) How would you improve the assignment?
+I would improve the assignment by doing something a little more interesting than implementing processes.
 
 # Logistics
 
